@@ -1,0 +1,49 @@
+<!--
+header1: removed unecessary components and renamed element texts and classes
+
+header2: add icons (after initial <a> tag)
+
+header3: make dropdown menu workable.
+
+header4: add a badge next to the shopping cart icon.  We do this by accessing our session which we made in the res.locals in app file. Also, link
+the shopping cart icon to a link with href:"/shopping-cart/" (our get route).
+--> 
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Brand</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/shopping-cart/">
+          <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+          Shopping Cart
+          <span class="badge">{{session.cart.totalQty}}</span>
+        </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-user" aria-hidden="true"></i>
+          User Management
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        {{#if login}}
+          <a class="dropdown-item" href="user/profile">User Account</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/user/logout">Logout</a>
+        
+        {{else}}
+        
+          <a class="dropdown-item" href="/user/signup">Sign up</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/user/signin">Sign in</a>
+         {{/if}}
+        </div>
+        
+      </li>
+    </ul>
+  </div>
+</nav>

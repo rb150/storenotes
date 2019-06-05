@@ -1,0 +1,31 @@
+<!--signup: contain elements in styling div, which itself is contained in row div (everything seems to be in 
+row div in bootstrap).  In form with sign up, be sure to set method="post". In form set div to form-group and in div
+make label element for email field.  Email and password will be requirements, but can have more (address, phone, etc.)
+Copy and past first div for password label and input field (shown as following div).  Add button element (type="submit")
+
+signup1: added csrfToken after form element in the form of text
+
+signup2: made button sexier and placed csrfToken inside hidden input field.  It must have a name of "_csrf" (must have this like this;
+this name tells element to find this token.)  Set value to variable csrfToken (in quotes).  With this, the token is submitted whenever
+we submit this form, and the csurf package is able to tell if the token is there.  If not done in this manner (as in like signup1),
+once the submit button is clicked, an error will be given.  In order to test this, set action in form element to /user/signup route.
+Then create a post method in router file with that route (index#.js in routes folder) and redirect to home route.
+-->
+
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <h1>sign up</h1>
+        <form action="/user/signup" method="post">
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="text" id="email" name="email" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" class="form-control">
+            </div>
+            <input type="hidden" name="_csrf" value="{{csrfToken}}">
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+        </form>    
+    </div>
+</div>

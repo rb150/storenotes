@@ -1,0 +1,44 @@
+<!--
+index1: deleted boilerplate html and added copied card component (replaces thumbnail component) from bootstrap.
+
+index2: added video game picture (halo 5) and added text (description, price).  Did styling by adding some classes (description, price)
+  added pull-right class to button to pull right.  Added class clearfix to div containing prie and button to clear all other floats. (doesn't do anything)
+  Added pull-left to price
+
+index3: mulitplied index2 cards by 3 to make three cards, and then multiplied those by 3 for 3 rows
+
+index4: used seeded data by looping through array (which has data) provided in rendering function (in this case productss, see routes/index1)
+(handlebars has for-each iterator, can't put here because it causes error). From documentation: You can iterate over a list using the built-in each helper. Inside the block, you can 
+use this to reference the element being iterated over.)
+
+index5: made a seperate card for each product by containing the card html inside the iterator (#each). Linked to each property in schema using this (refer to above).
+Placed the iterating method inside a row element and bootstrap does all the work.  Youtube tutorial has a different way that is longer and more complicated (current method in comment section)
+
+index6: We want to be able to add items to the cart.  To do this, we create a link in the "add to cart" button to a "add-to-cart" (or whatever name) route that we will create.
+The route in the index#.js file (not to be confused with this, the index#.hbs file), expects to get an id from the view in the href ('/add-to-cart/:id') and so we need to put
+an id into the link using this._id in the handlebar parenthesis thing.
+-->
+
+
+
+<div class="row">
+{{#each productss}}
+    <div class="col-md-4">
+        <div class="card">
+            <img class="card-img-top" src={{this.imagePath}} alt="Card image cap">
+            <div class="card-block">
+                <h4 class="card-title">{{this.title}}</h4>
+                <p class="card-text description">{{this.description}}</p>
+                <div>
+                    <div class="price pull-left">{{this.price}}</div>
+                    <a href="/add-to-cart/{{this._id}}" class="btn btn-success pull-right">Add to cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{{/each}} 
+</div>
+
+
+
+

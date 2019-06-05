@@ -1,0 +1,17 @@
+/*
+style1: deleted boilerplate code.  Added max-height: 150px (bad idea) to image element in card element
+   Also added some styling for index2.hbs (bootstrap card) with classes      
+*/
+
+.card img {
+  max-height: auto;
+}
+
+.card .descrtiption {
+  color: gray;
+}
+
+.price {
+  font-weight: bold;
+  font-size: 16px;
+}

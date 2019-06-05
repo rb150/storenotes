@@ -1,0 +1,52 @@
+<!--shopping-cart: video 13: shopping cart view.  Create each items div, and then the total price div followed by the checkout div.
+We will also create a "No items in Cart" title which we will wrap inside an if loop in case we don't have a cart.
+
+shopping-cart1: modify the template with our variables.  Basically, see if we have any products, and if we do, loop through them 
+(in the unordered list (<ul>) with each loop) with our template.  If we don't, then use the "no itmes in cart" div. 
+
+shopping-cart2: put in the properties for the individual components (title, quantity, etc.) from our product variable.  Add 
+data-toggle attribute and set it equal to dorpdown in the button for dropdown.
+Also, change button for checkout to anchor tag and add href tag to the checkout route
+
+-->
+
+{{#if products}}
+<div class="row">
+    <div class="col-md-4">
+        <ul class="list-group">
+            {{#each products }}
+            <li class="list-group-item">
+                <span class="badge">{{this.qty}}</span>
+                <strong>{{this.item.title}}</strong>
+                <span class='label label-success'>${{this.price}}</span>
+                <div class='btn-group'>
+                    <button class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown">Action <span class="care"></span></button>
+                    <ul class="dropdown-menu">
+                        <li><a href="">Reduce by 1</a></li>
+                        <li><a href="">Reduce all</a></li>
+                    </ul>
+                </div>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <strong>Total: ${{totalPrice}} </strong>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-md-4">
+        <a href="/checkout" class="btn btn-success">Checkout</button>
+    </div>
+</div>
+{{else}}
+<div class="row">
+    <div class="col-md-4">
+        <strong>No Items In Cart</strong>
+    </div>
+</div>
+{{/if}}
+
